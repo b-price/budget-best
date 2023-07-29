@@ -7,8 +7,12 @@ export default function BudgetCard({
   max,
   gray,
   hideButtons,
+  incomeCard,
   onAddExpenseClick,
   onViewExpensesClick,
+  onAddIncomeClick,
+  onViewIncomeClick,
+
 }) {
   const classNames = []
   if (amount > max) {
@@ -53,6 +57,20 @@ export default function BudgetCard({
               View Expenses
             </Button>
           </Stack>
+        )}
+        {incomeCard && (
+            <Stack direction="horizontal" gap="2" className="mt-4">
+              <Button
+                  variant="outline-primary"
+                  className="ms-auto"
+                  onClick={onAddIncomeClick}
+              >
+                Add Income
+              </Button>
+              <Button onClick={onViewIncomeClick} variant="outline-secondary">
+                View Income
+              </Button>
+            </Stack>
         )}
       </Card.Body>
     </Card>
