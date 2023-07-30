@@ -16,11 +16,13 @@ export default function BudgetCard({
   onViewIncomeClick,
 
 }) {
-  const classNames = []
+  const classNames = [] // check if the amount is > maximum
+  // the class names are pushed in depending on the amount/max ratio
   if (amount > max) {
-    classNames.push("bg-danger", "bg-opacity-10")
+    classNames.push("bg-danger", "bg-opacity-10") // red background
+    // will override the gray backround if the amount > max
   } else if (gray) {
-    classNames.push("bg-light")
+    classNames.push("bg-light") // gray card
   }
 
   return (
@@ -46,9 +48,9 @@ export default function BudgetCard({
             className="rounded-pill"
             // the amount in the progress bar reflects how many expenses are in the budget
             variant={getProgressBarVariant(amount, max)}
-            min={0}
+            min={0} // min cannot be less than 0
             max={max}
-            now={amount}
+            now={amount} // current amount
           />
         )}
 
@@ -89,9 +91,9 @@ export default function BudgetCard({
 function getProgressBarVariant(amount, max) {
   // amount of expenses compared to the budget limit is the 
   const ratio = amount / max
+  // if budget is less than 25% used then show a green color
   if (ratio < 0.25) return "success"
   // if the budget is less than 50% used then show no color
-  
   if (ratio < 0.5) return "primary"
   // if the budget is 50%-75% used then show a yellow color
   if (ratio < 0.75) return "warning"
