@@ -44,6 +44,7 @@ export default function BudgetCard({
         {max && (
           <ProgressBar
             className="rounded-pill"
+            // the amount in the progress bar reflects how many expenses are in the budget
             variant={getProgressBarVariant(amount, max)}
             min={0}
             max={max}
@@ -86,8 +87,14 @@ export default function BudgetCard({
 }
 
 function getProgressBarVariant(amount, max) {
+  // amount of expenses compared to the budget limit is the 
   const ratio = amount / max
+  if (ratio < 0.25) return "success"
+  // if the budget is less than 50% used then show no color
+  
   if (ratio < 0.5) return "primary"
+  // if the budget is 50%-75% used then show a yellow color
   if (ratio < 0.75) return "warning"
+  // if budget is 75% or over then show the bar as red
   return "danger"
 }
