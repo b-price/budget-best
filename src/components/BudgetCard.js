@@ -1,6 +1,8 @@
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap"
 import { currencyFormatter } from "../utils"
 
+// budget card is also used for income card
+
 export default function BudgetCard({
   name,
   amount,
@@ -27,13 +29,17 @@ export default function BudgetCard({
         <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
           <div className="me-2">{name}</div>
           <div className="d-flex align-items-baseline">
+            {/* show the amount as the current amount / max */}
             {currencyFormatter.format(amount)}
             {max && (
               <span className="text-muted fs-6 ms-1">
-                / {currencyFormatter.format(max)}
+                / 
+                {currencyFormatter.format(max)}
               </span>
             )}
           </div>
+
+        {/* specify the name of the card in card title */}
         </Card.Title>
         {max && (
           <ProgressBar
@@ -44,6 +50,8 @@ export default function BudgetCard({
             now={amount}
           />
         )}
+
+        {/* hide the buttons in the total card since we cannot add/delete expenses/income */}
         {!hideButtons && (
           <Stack direction="horizontal" gap="2" className="mt-4">
             <Button

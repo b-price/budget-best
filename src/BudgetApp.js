@@ -45,6 +45,8 @@ function BudgetApp() {
             Add Expense
           </Button>
         </Stack>
+        
+        {/* section with cards for budgets, income, and total */}
         <div
           style={{
             display: "grid",
