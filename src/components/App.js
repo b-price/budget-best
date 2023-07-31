@@ -8,6 +8,7 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
+import Navbar from "../NavbarLight"
 
 function App() {
     return (
@@ -15,7 +16,9 @@ function App() {
             className="d-flex align-items-center justify-content-center"
             style={{ minHeight: "100vh" }}
         >
+            
             <div className="w-100" style={{ maxWidth: "1200px" }}>
+            <Navbar />
                 <Router>
                     <AuthProvider>
                         <Switch>
