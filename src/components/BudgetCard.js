@@ -81,6 +81,11 @@ export default function BudgetCard({
               <Button onClick={onViewIncomeClick} variant="outline-secondary">
                 View Income
               </Button>
+              {/*Display the remaining balance here */}
+              <div>
+                <strong>Remaining Balance: </strong>
+                {currencyFormatter.format(remainingBalance)}
+              </div>
             </Stack>
         )}
       </Card.Body>
