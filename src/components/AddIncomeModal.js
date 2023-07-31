@@ -3,9 +3,9 @@ import { useRef } from "react"
 import { useBudgets } from "../contexts/BudgetsContext"
 
 export default function AddIncomeModal({
-                                            show,
-                                            handleClose,
-                                        }) {
+    show,
+    handleClose,
+}) {
     const descriptionRef = useRef()
     const amountRef = useRef()
     const { addIncome } = useBudgets()

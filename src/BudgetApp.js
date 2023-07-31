@@ -44,6 +44,9 @@ function BudgetApp() {
           <Button variant="outline-primary" onClick={openAddExpenseModal}>
             Add Expense
           </Button>
+          <Button variant="outline-success" onclick={openAddIncomeModal}>
+            Add Income
+          </Button>
         </Stack>
         
         {/* section with cards for budgets, income, and total */}
