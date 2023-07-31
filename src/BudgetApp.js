@@ -8,10 +8,15 @@ import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard"
 import TotalBudgetCard from "./components/TotalBudgetCard"
 import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
+import IncomeCard from "./components/IncomeCard";
+import AddIncomeModal from "./components/AddIncomeModal";
+import ViewIncomeModal from "./components/ViewIncomeModal";
 
-function App() {
+function BudgetApp() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
+  const [showAddIncomeModal, setShowAddIncomeModal] = useState(false)
+  const [showViewIncomeModal, setShowViewIncomeModal] = useState(false)
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState()
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
   const { budgets, getBudgetExpenses } = useBudgets()
@@ -20,6 +25,13 @@ function App() {
     setShowAddExpenseModal(true)
     setAddExpenseModalBudgetId(budgetId)
   }
+    function openAddIncomeModal() {
+        setShowAddIncomeModal(true)
+    }
+
+    function openViewIncomeModal(){
+      setShowViewIncomeModal(true)
+    }
 
   return (
     <>
@@ -32,7 +44,12 @@ function App() {
           <Button variant="outline-primary" onClick={openAddExpenseModal}>
             Add Expense
           </Button>
+          <Button variant="outline-success" onclick={openAddIncomeModal}>
+            Add Income
+          </Button>
         </Stack>
+        
+        {/* section with cards for budgets, income, and total */}
         <div
           style={{
             display: "grid",
@@ -66,6 +83,10 @@ function App() {
             }
           />
           <TotalBudgetCard />
+            <IncomeCard
+                onAddIncomeClick={openAddIncomeModal}
+                onViewIncomeClick={openViewIncomeModal}
+            />
         </div>
       </Container>
       <AddBudgetModal
@@ -77,6 +98,11 @@ function App() {
         defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
+        <AddIncomeModal
+            show={showAddIncomeModal}
+            handleClose={() => setShowAddIncomeModal(false)}
+        />
+
       <ViewExpensesModal
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}
@@ -85,4 +111,4 @@ function App() {
   )
 }
 
-export default App
+export default BudgetApp
