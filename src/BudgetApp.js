@@ -44,7 +44,7 @@ function BudgetApp() {
           <Button variant="outline-primary" onClick={openAddExpenseModal}>
             Add Expense
           </Button>
-          <Button variant="outline-success" onclick={openAddIncomeModal}>
+          <Button variant="outline-success" onClick={openAddIncomeModal}>
             Add Income
           </Button>
         </Stack>
@@ -102,7 +102,11 @@ function BudgetApp() {
             show={showAddIncomeModal}
             handleClose={() => setShowAddIncomeModal(false)}
         />
-
+        {
+        <ViewIncomeModal
+            show={showViewIncomeModal}
+            handleClose={() => setShowViewIncomeModal(false)}
+        />}
       <ViewExpensesModal
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}
