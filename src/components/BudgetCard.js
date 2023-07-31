@@ -72,7 +72,7 @@ export default function BudgetCard({
         {incomeCard && (
             <Stack direction="horizontal" gap="2" className="mt-4">
               <Button
-                  variant="outline-primary"
+                  variant="outline-success"
                   className="ms-auto"
                   onClick={onAddIncomeClick}
               >
