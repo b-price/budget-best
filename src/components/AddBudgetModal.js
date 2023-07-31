@@ -7,6 +7,7 @@ export default function AddBudgetModal({ show, handleClose }) {
   const maxRef = useRef()
   const { addBudget } = useBudgets()
   function handleSubmit(e) {
+    // make sure the form doesn't auto submit
     e.preventDefault()
     addBudget({
       name: nameRef.current.value,
@@ -16,16 +17,23 @@ export default function AddBudgetModal({ show, handleClose }) {
   }
 
   return (
+    // pass in show and handleClose
     <Modal show={show} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
+        {/* allows user to close the modal */}
         <Modal.Header closeButton>
           <Modal.Title>New Budget</Modal.Title>
         </Modal.Header>
+
+        {/* body contains all of the inputs in the form */}
         <Modal.Body>
+          {/* input for budget name */}
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control ref={nameRef} type="text" required />
           </Form.Group>
+
+          {/* input for maximum spending */}
           <Form.Group className="mb-3" controlId="max">
             <Form.Label>Maximum Spending</Form.Label>
             <Form.Control
@@ -36,6 +44,8 @@ export default function AddBudgetModal({ show, handleClose }) {
               step={0.01}
             />
           </Form.Group>
+
+          {/* button to submit the form */}
           <div className="d-flex justify-content-end">
             <Button variant="primary" type="submit">
               Add

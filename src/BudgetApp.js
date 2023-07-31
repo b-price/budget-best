@@ -16,7 +16,7 @@ function BudgetApp() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
   const [showAddIncomeModal, setShowAddIncomeModal] = useState(false)
-    const [showViewIncomeModal, setShowViewIncomeModal] = useState(false)
+  const [showViewIncomeModal, setShowViewIncomeModal] = useState(false)
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState()
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
   const { budgets, getBudgetExpenses } = useBudgets()
