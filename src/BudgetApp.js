@@ -37,7 +37,7 @@ function BudgetApp() {
     <>
       <Container className="my-4">
         <Stack direction="horizontal" gap="2" className="mb-4">
-          <h1 className="me-auto">Budgets</h1>
+          <h1 className="me-auto">Dashboard</h1>
           <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
             Add Budget
           </Button>
@@ -91,6 +91,8 @@ function BudgetApp() {
             />
         </div>
       </Container>
+
+      {/* modals for adding a budget, expense, or income amount */}
       <AddBudgetModal
         show={showAddBudgetModal}
         handleClose={() => setShowAddBudgetModal(false)}
@@ -100,15 +102,16 @@ function BudgetApp() {
         defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
-        <AddIncomeModal
-            show={showAddIncomeModal}
-            handleClose={() => setShowAddIncomeModal(false)}
-        />
-        {
-        <ViewIncomeModal
-            show={showViewIncomeModal}
-            handleClose={() => setShowViewIncomeModal(false)}
-        />}
+      <AddIncomeModal
+          show={showAddIncomeModal}
+          handleClose={() => setShowAddIncomeModal(false)}
+      />
+      
+      {/* modals for viewing the expenses and income */}
+      <ViewIncomeModal
+          show={showViewIncomeModal}
+          handleClose={() => setShowViewIncomeModal(false)}
+      />
       <ViewExpensesModal
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}
