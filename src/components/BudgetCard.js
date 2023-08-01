@@ -7,10 +7,15 @@ export default function BudgetCard({
   name,
   amount,
   max,
+
+  // specifies card color
   gray, 
   green, 
+
   hideButtons,
   incomeCard,
+
+  // button clicks
   onAddExpenseClick,
   onViewExpensesClick,
   onAddIncomeClick,
@@ -74,6 +79,8 @@ export default function BudgetCard({
             </Button>
           </Stack>
         )}
+        
+        {/* card for tracking income */}
         {incomeCard && (
             <Stack direction="horizontal" gap="2" className="mt-4">
               <Button
