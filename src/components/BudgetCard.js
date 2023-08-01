@@ -6,6 +6,7 @@ import { currencyFormatter } from "../utils"
 export default function BudgetCard({
   name,
   amount,
+  remainingBalance,
   max,
   gray,
   hideButtons,
