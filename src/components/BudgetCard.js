@@ -7,7 +7,8 @@ export default function BudgetCard({
   name,
   amount,
   max,
-  gray,
+  gray, 
+  green, 
   hideButtons,
   incomeCard,
   onAddExpenseClick,
@@ -17,6 +18,10 @@ export default function BudgetCard({
 
 }) {
   const classNames = [] // check if the amount is > maximum
+  // green background for the income card
+  if (green) {
+    classNames.push("bg-success", "bg-opacity-10")
+  }
   // the class names are pushed in depending on the amount/max ratio
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10") // red background
@@ -72,7 +77,7 @@ export default function BudgetCard({
         {incomeCard && (
             <Stack direction="horizontal" gap="2" className="mt-4">
               <Button
-                  variant="outline-success"
+                  variant="success"
                   className="ms-auto"
                   onClick={onAddIncomeClick}
               >
