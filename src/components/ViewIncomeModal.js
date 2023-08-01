@@ -14,8 +14,11 @@ export default function ViewIncomeModal({ show, handleClose }) {
                     </Stack>
                 </Modal.Title>
             </Modal.Header>
+
+            {/* section that contains all of the income entries */}
             <Modal.Body>
                 <Stack direction="vertical" gap="3">
+                    {/* loop through all income that was input */}
                     {income.map(income => (
                         <Stack direction="horizontal" gap="2" key={income.id}>
                             <div className="me-auto fs-4">{income.description}</div>

@@ -59,6 +59,8 @@ function BudgetApp() {
           }}
         >
           {budgets.map(budget => {
+            // amount represents the total of all expenses in a certain budget
+            // using the budgetId
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,
               0

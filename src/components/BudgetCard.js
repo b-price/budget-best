@@ -53,6 +53,7 @@ export default function BudgetCard({
 
         {/* specify the name of the card in card title */}
         </Card.Title>
+        {/* do not show a progress bar if there is no max */}
         {max && (
           <ProgressBar
             className="rounded-pill"
