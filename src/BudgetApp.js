@@ -11,6 +11,7 @@ import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
 import IncomeCard from "./components/IncomeCard";
 import AddIncomeModal from "./components/AddIncomeModal";
 import ViewIncomeModal from "./components/ViewIncomeModal";
+import TotalSavedCard from "./components/TotalSavedCard";
 
 function BudgetApp() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -89,6 +90,7 @@ function BudgetApp() {
                 onAddIncomeClick={openAddIncomeModal}
                 onViewIncomeClick={openViewIncomeModal}
             />
+            <TotalSavedCard />
         </div>
       </Container>
 
