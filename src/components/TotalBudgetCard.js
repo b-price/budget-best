@@ -12,5 +12,7 @@ export default function TotalBudgetCard() {
   // if there are no expenses/budgets do not show the total
   if (max === 0) return null
 
+
   return <BudgetCard amount={amount} name="Total Expenses" gray max={max} hideButtons />
+
 }
