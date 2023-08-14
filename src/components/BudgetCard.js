@@ -8,9 +8,15 @@ export default function BudgetCard({
   amount,
   remainingBalance,
   max,
-  gray,
+
+  // specifies card color
+  gray, 
+  green, 
+
   hideButtons,
   incomeCard,
+
+  // button clicks
   onAddExpenseClick,
   onViewExpensesClick,
   onAddIncomeClick,
@@ -18,6 +24,10 @@ export default function BudgetCard({
 
 }) {
   const classNames = [] // check if the amount is > maximum
+  // green background for the income card
+  if (green) {
+    classNames.push("bg-success", "bg-opacity-10")
+  }
   // the class names are pushed in depending on the amount/max ratio
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10") // red background
@@ -44,6 +54,7 @@ export default function BudgetCard({
 
         {/* specify the name of the card in card title */}
         </Card.Title>
+        {/* do not show a progress bar if there is no max */}
         {max && (
           <ProgressBar
             className="rounded-pill"
@@ -70,10 +81,12 @@ export default function BudgetCard({
             </Button>
           </Stack>
         )}
+        
+        {/* card for tracking income */}
         {incomeCard && (
             <Stack direction="horizontal" gap="2" className="mt-4">
               <Button
-                  variant="outline-success"
+                  variant="success"
                   className="ms-auto"
                   onClick={onAddIncomeClick}
               >

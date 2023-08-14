@@ -8,12 +8,11 @@ export default function IncomeCard(props) {
     // Calculate the remaining balance by subtracting expenses from income
     const remainingBalance = incomeAmount - expensesAmount;
 
-    return <BudgetCard 
-    amount={incomeAmount} 
-    name="Income" 
-    remainingBalance={remainingBalance}
-    gray 
-    hideButtons 
-    incomeCard 
-    {...props} />
+
+    // do not display income card if there is no income
+    if (amount == 0) return null
+
+    return <BudgetCard amount={amount} name="Income" green hideButtons incomeCard {...props} />
 }
+
+

@@ -11,6 +11,7 @@ import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
 import IncomeCard from "./components/IncomeCard";
 import AddIncomeModal from "./components/AddIncomeModal";
 import ViewIncomeModal from "./components/ViewIncomeModal";
+import TotalSavedCard from "./components/TotalSavedCard";
 
 function BudgetApp() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -37,7 +38,7 @@ function BudgetApp() {
     <>
       <Container className="my-4">
         <Stack direction="horizontal" gap="2" className="mb-4">
-          <h1 className="me-auto">Budgets</h1>
+          <h1 className="me-auto">Dashboard</h1>
           <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
             Add Budget
           </Button>
@@ -59,6 +60,8 @@ function BudgetApp() {
           }}
         >
           {budgets.map(budget => {
+            // amount represents the total of all expenses in a certain budget
+            // using the budgetId
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,
               0
@@ -87,8 +90,11 @@ function BudgetApp() {
                 onAddIncomeClick={openAddIncomeModal}
                 onViewIncomeClick={openViewIncomeModal}
             />
+            <TotalSavedCard />
         </div>
       </Container>
+
+      {/* modals for adding a budget, expense, or income amount */}
       <AddBudgetModal
         show={showAddBudgetModal}
         handleClose={() => setShowAddBudgetModal(false)}
@@ -98,15 +104,16 @@ function BudgetApp() {
         defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
-        <AddIncomeModal
-            show={showAddIncomeModal}
-            handleClose={() => setShowAddIncomeModal(false)}
-        />
-        {
-        <ViewIncomeModal
-            show={showViewIncomeModal}
-            handleClose={() => setShowViewIncomeModal(false)}
-        />}
+      <AddIncomeModal
+          show={showAddIncomeModal}
+          handleClose={() => setShowAddIncomeModal(false)}
+      />
+      
+      {/* modals for viewing the expenses and income */}
+      <ViewIncomeModal
+          show={showViewIncomeModal}
+          handleClose={() => setShowViewIncomeModal(false)}
+      />
       <ViewExpensesModal
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}

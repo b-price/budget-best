@@ -26,10 +26,13 @@ export default function AddIncomeModal({
                     <Modal.Title>New Income</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    {/* section to input the income description */}
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Description</Form.Label>
                         <Form.Control ref={descriptionRef} type="text" required />
                     </Form.Group>
+
+                    {/* section to input the income amount */}
                     <Form.Group className="mb-3" controlId="amount">
                         <Form.Label>Amount</Form.Label>
                         <Form.Control
